@@ -22,6 +22,7 @@ img, svg {
     height: auto;
 }
 button {
+    display: block;
     padding: 0;
     cursor: pointer;
     background-color: transparent;
@@ -53,12 +54,12 @@ fieldset {margin: 0;
     transform: scale(0);
 }
 /*
-  Пример контейнера
-  
-  Если контейнер 1180px по макету,
-  то для max-width прибавляем паддинги 30px*2, 
-  в итоге 1240px
-  Чтобы контент не прижимался к краям экрана
+Пример контейнера
+
+Если контейнер 1180px по макету,
+то для max-width прибавляем паддинги 30px*2, 
+в итоге 1240px
+Чтобы контент не прижимался к краям экрана
   */
 .container {
     --max-width:1180px;
@@ -66,17 +67,17 @@ fieldset {margin: 0;
     max-width: calc(var(--max-width)+var(--padding)*2);
     padding: var(--padding);
     margin: 0 auto;
-}
 
-@include laptop{
-    --max-width: 880px;
-}
 
-@include tablet {
-    --max-width:620px;
-}
-@include mobile(540px) {
-    --padding:15px;
-}
+        @include laptop {
+            --max-width: 880px;
+        }
 
+        @include tablet {
+            --max-width:620px;
+        }
+        @include mobile {
+            --padding:15px;
+        }
+}
 
