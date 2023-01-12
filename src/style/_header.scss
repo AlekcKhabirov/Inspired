@@ -8,6 +8,9 @@
         display: grid;
         grid-template-columns:repeat(3, 1fr);
         align-items:center;
+        @include mobile{
+            grid-template-columns:repeat(2,1fr);
+        }
     }
     &__phone{
     font-weight: 600;
@@ -25,7 +28,15 @@
         }
     }
     &__logo{
-    justify-self: center;
+        justify-self: center;
+
+        @include tablet{
+            width: 154px;     
+        }
+        @include mobile{
+            width: 124px;
+            justify-self: start;
+        }
     }
     &__navigation{
     justify-self: end;
