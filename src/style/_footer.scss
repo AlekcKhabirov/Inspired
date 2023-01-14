@@ -1,0 +1,36 @@
+.footer{
+    &__container{
+        display: grid;
+        grid-template-areas: 
+        'category';
+    }
+
+    &__item{
+
+        &__category{
+            grid-area: category;
+        }
+
+        &_social{
+            
+        }
+
+        &___contacts{
+
+        }
+
+        &_copyright{
+
+        }
+
+        &_development{
+
+        }
+
+    }
+    
+}
+
+
+
+
