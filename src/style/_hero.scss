@@ -32,11 +32,13 @@
     }
     &__content{
         padding: 172px 0 86px;
-        max-width: 590px;
+        max-width: 690px;
+        padding-left: 72px;
 
         @include tablet{
             padding: 156px 0 50px;
-            max-width: 410px;
+            max-width: 520px;
+            padding-left: 72px;
         }
         @include mobile{
             padding: 76px auto;
