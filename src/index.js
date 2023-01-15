@@ -1,6 +1,12 @@
 import './index.html';
 import './index.scss';
+import { renderFooter } from './modules/render/renderFooter';
+import {renderHeader} from './modules/render/renderHeader';
+import { mainPage } from './modules/mainPage/mainPage';
 
+renderHeader();
+renderFooter();
+mainPage();
 
 
 

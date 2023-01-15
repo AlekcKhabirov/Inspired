@@ -19,6 +19,7 @@
             padding-top: 25px;
             padding-bottom: 16px;
             gap-row: 17px;
+            
         }
         @include mobile{
             grid-template-columns: 1fr max-content;
