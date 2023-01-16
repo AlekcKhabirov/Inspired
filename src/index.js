@@ -1,12 +1,43 @@
 import './index.html';
 import './index.scss';
+
+import { router } from './modules/router';
+import { mainPage } from './modules/mainPage/mainPage';
 import { renderFooter } from './modules/render/renderFooter';
 import {renderHeader} from './modules/render/renderHeader';
-import { mainPage } from './modules/mainPage/mainPage';
+import { womanMainPage } from './modules/mainPage/womanMainPage';
+import { manMainPage } from './modules/mainPage/manMainPage';
 
-renderHeader();
-renderFooter();
-mainPage();
+
+router.on('*',()=>{
+    renderHeader();
+    renderFooter();
+});
+
+router.on('/',()=>{
+    console.warn(1111);
+    mainPage();
+});
+router.on('woman',()=>{
+    womanMainPage();
+});
+
+router.on('man',()=>{
+    manMainPage();
+});
+
+setTimeout(()=>{
+    router.navigate('man');
+},3000);
+
+setTimeout(()=>{
+    router.navigate('woman');
+},6000);
+
+router.resolve();
+
+
+
 
 
 
