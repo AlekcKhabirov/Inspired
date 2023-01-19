@@ -15,7 +15,7 @@ router.on('*',()=>{
 });
 
 router.on('/',()=>{
-    console.warn(1111);
+   /* console.warn(1111);*/
     mainPage();
 });
 router.on('woman',()=>{
@@ -26,15 +26,15 @@ router.on('man',()=>{
     manMainPage();
 });
 
-setTimeout(()=>{
-    router.navigate('man');
+/*setTimeout(()=>{
+    router.navigate('man');console.warn(1111);
 },3000);
 
 setTimeout(()=>{
     router.navigate('woman');
-},6000);
+},6000);*/
 
-router.resolve();
+router.resolve();/*запустил роутер*/
 
 
 
