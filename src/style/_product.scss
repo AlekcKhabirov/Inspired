@@ -9,6 +9,8 @@
 
     &__image{
         margin-bottom: 16px;
+        background-image:url(../img/card.jpg);
+    
 
         @include tablet{
             margin-bottom: 10px;
