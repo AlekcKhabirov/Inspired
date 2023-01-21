@@ -5,8 +5,8 @@ import { router } from './modules/router';
 import { mainPage } from './modules/mainPage/mainPage';
 import { renderFooter } from './modules/render/renderFooter';
 import {renderHeader} from './modules/render/renderHeader';
-import { womanMainPage } from './modules/mainPage/womanMainPage';
-import { manMainPage } from './modules/mainPage/manMainPage';
+import { womenMainPage } from './modules/mainPage/womenMainPage';
+import { menMainPage } from './modules/mainPage/menMainPage';
 
 
 router.on('*',()=>{
@@ -18,21 +18,21 @@ router.on('/',()=>{
    /* console.warn(1111);*/
     mainPage();
 });
-router.on('woman',()=>{
-    womanMainPage();
+router.on('women',()=>{
+    womenMainPage();
 });
 
-router.on('man',()=>{
-    manMainPage();
+router.on('men',()=>{
+    menMainPage();
 });
 
-/*setTimeout(()=>{
-    router.navigate('man');console.warn(1111);
+setTimeout(()=>{
+    router.navigate('men');console.warn(1111);
 },3000);
 
 setTimeout(()=>{
-    router.navigate('woman');
-},6000);*/
+    router.navigate('women');
+},6000);/**/
 
 router.resolve();/*запустил роутер*/
 
