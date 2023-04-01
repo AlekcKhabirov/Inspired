@@ -1,113 +1,115 @@
-import { createElement } from "../createElement";
-import {dataNavigation} from "../dataNavigation";
+import { DATA, navigation } from '../const';
+import { createElement } from '../utils/createElement';
 
-export const renderNavigation = (gender)=>{
-    const navigation = document.querySelector('.navigation');
+let flag = false;
+let oldGender = 'women';
+let oldCategory = '';
 
-navigation.textContent='';
-const container = createElement('div',
+export const renderNavigation = ({ gender, category, render, repeat }) => {
+  if (!render) {
+    navigation.style.dispay = 'none';
+    return;
+  } else {
+    navigation.style.dispay = '';
+  }
+
+  if (flag && oldGender === gender && oldCategory === category) {
+    return;
+  }
+
+  if (repeat) {
+    gender = oldGender;
+  }
+
+  oldGender = gender;
+  oldCategory = category;
+
+  flag = true;
+
+  navigation.textContent = '';
+
+  const container = createElement(
+    'div',
     {
-        className:'container',
+      className: 'container',
     },
     {
-        parent:navigation,
+      parent: navigation,
     },
+  );
+
+  const genderList = createElement(
+    'ul',
+    {
+      className: 'navigation__gender gender',
+    },
+    {
+      parent: container,
+    },
+  );
+
+  for (const genderName in DATA.navigation) {
+    createElement(
+      'a',
+      {
+        className: `gender__link
+          ${gender === genderName ? 'gender__link_active' : ''}`,
+        href: `#/${genderName}`,
+        textContent: DATA.navigation[genderName].title,
+      },
+      {
+        parent: createElement(
+          'li',
+          {
+            className: 'gender__item',
+          },
+          {
+            parent: genderList,
+          },
+        ),
+      },
     );
+  }
 
-const genderList=createElement('ul',
-    {
-        className:'navigation__gender gender',
-    },
-    {
-        parent:container,
-    },
-    );
+  const categoryElems = DATA.navigation[gender].list.map((item) =>
+    createElement(
+      'li',
+      {
+        className: 'category__item',
+      },
+      {
+        append: createElement(
+          'a',
+          {
+            className: `category__link 
+              ${category === item.slug ? 'category__link_active' : ''}`,
+            textContent: item.title,
+            href: `#/${gender}/${item.slug}`,
+          },
+          {
+            cb(elem) {
+              elem.addEventListener('click', () => {
+                document
+                  .querySelector('.category__link_active')
+                  ?.classList.remove('category__link_active');
 
-for(const genderName in dataNavigation){
-        createElement('a',
-        {
-            className:`gender__link ${gender === genderName ? 'gender__link_activ':" "}`,
-            href:`#/${genderName}`,
-            textContent:dataNavigation[genderName].title,
-        },
-        {
-            parent:createElement('li',
-                {
-                    className:'gender__item',                
-                    parent:genderList,    
-                },        
-            ),
-        }, 
-        );
-    };
-
-const categoryElems = dataNavigation[gender].list.map((item)=>createElement('li',
-    {
-        className:'category__item',
-    },
-    {
-        append:createElement('a',
-        {
-            className:'category__link',
-            textContent:item.title,
-            href:`#/${gender}/${item.slug}`,
-        },
-        {  
-            cb(elem){
-                //console.log('elem:',elem);
-                elem.addEventListener('click',()=>document.querySelector('.category__link_activ')?. classList.remove('category__link_activ'),
-                elem.classList.add('category__link_activ')
-                );
+                elem.classList.add('category__link_active');
+              });
             },
-        },
-        )
-    },
-    ));
-    
-createElement('ul',
+          },
+        ),
+      },
+    ),
+  );
+
+  createElement(
+    'ul',
     {
-        className:'navigation__category category',
+      className: 'navigation__category category',
     },
     {
-        parent:container,
-        appends:categoryElems,
+      parent: container,
+      appends: categoryElems,
     },
-)
+  );
 };
-    
-                                        /*navigation.innerHTML=
-    ` <div class="container">
-        <ul class="navigation__gender gender">
-            <li class="gender__item">
-            <a href="#" class="gender__link gender__link_activ">Женщины</a>
-            </li>
-            <li class="gender__item">
-            <a href="#" class="gender__link">Мужчины</a>
-            </li>
-        </ul>
-        </div>
-        
-        <div class="navigation__category">
-        <ul class="navigation__category category">
-            <li class="navigation__item">
-            <a href="#" class="category__link__link_activ">Лифчики</a>
-            </li>
-            <li class="navigation__item">
-            <a href="#" class="category__link">Трузера(флаевые, с кокетками на боксайдах)</a>
-            </li>
-            <li class="navigation__item">
-            <a href="#" class="category__link">Носки</a>
-            </li>
-            <li class="navigation__item">
-            <a href="#" class="category__link">Халаты</a>
-            </li>
-            <li class="navigation__item">
-            <a href="#" class="category__link">Рейтузы с начёсом</a>
-            </li>
-            <li class="navigation__item">
-            <a href="#" class="category__link">Пижамы</a>
-            </li>
-        </ul>
-        </div>
-    `;*/
-createElement

@@ -1,64 +1,85 @@
-.header{
-    padding: 24px 0 36px;
+.header {
+  padding: 24px 0 36px;
 
-    @include tablet{
-        padding: 16px 0;    
+  @include tablet {
+    padding: 16px 0;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
     }
-    &__container{
-        display: grid;
-        grid-template-columns:repeat(3, 1fr);
-        align-items:center;
-        @include mobile{
-            grid-template-columns:repeat(2,1fr);
-        }
-    }
-    &__phone{
+  }
+
+  &__phone {
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
-    /* identical to box height */
     text-transform: uppercase;
-    color:var(--second-color);
-        @include tablet{
-            font-size: 12px;
-        line-height: 15ph;
-        }
-        @include mobile{
-            display: none;
-        }
-    }
-    &__logo{
-        justify-self: center;
 
-        @include tablet{
-            width: 154px;     
-        }
-        @include mobile{
-            width: 124px;
-            justify-self: start;
-        }
+    @include tablet {
+      font-size: 12px;
+      line-height: 15px;
     }
-    &__navigation{
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__logo {
+    justify-self: center;
+
+    @include tablet {
+      width: 154px;
+    }
+
+    @include mobile {
+      justify-self: start;
+      width: 124px;
+    }
+  }
+
+  &__navigation {
     justify-self: end;
-    }
-    &__nav-list{
+  }
+
+  &__nav-list {
     display: flex;
-    align-items:center;
+    align-items: center;
     gap: 24px;
-        @include mobile{
-            gap: 16px;
-        }
+
+    @include mobile {
+      gap: 16px;
     }
-    &__link{
+  }
+
+  &__link {
+    position: relative;
     transition: color 0.3s ease-in-out;
-        
-        &:hover{
-            color:$grey;
-        }
+
+    &:hover {
+      color: $gray;
     }
+  }
 
-} 
-
-
-
-
+  &__link-count {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    color: $second-color;
+    top: 0;
+    right: -6px;
+    background-color: $main-color;
+    text-align: center;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 18px;
+  }
+}
