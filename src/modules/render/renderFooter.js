@@ -142,7 +142,7 @@ export const renderFooter = () => {
             </li>
 
             <li class="footer-development__item">
-              Developer: <a class="footer__link" href="https://t.me/Quper">Maksim Leskin</a>
+              Developer: <a class="footer__link" href="https://t.me/АликХ.">AlekcKhabirov</a>
             </li>
           </ul>
       </div>
